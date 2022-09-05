@@ -1,0 +1,34 @@
+<div class="p-2" *ngIf="address">
+    <table class="table table-hover table">
+        <tbody>
+          <tr>
+            <th scope="row">Postcode:</th>
+            <td>{{ address.postcode }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Latitude:</th>
+            <td>{{ address.latitude }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Longitude:</th>
+            <td>{{ address.longitude }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Country:</th>
+            <td>{{ address.country }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Region:</th>
+            <td>{{ address.region }}</td>
+          </tr>
+          <tr>
+            <th scope="row">District:</th>
+            <td>{{ address.admin_district }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Ward:</th>
+            <td>{{ address.admin_ward }}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>

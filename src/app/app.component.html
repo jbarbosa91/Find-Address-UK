@@ -1,0 +1,36 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<div class="d-flex flex-column align-items-center container">
+  <div class="row">
+      <h1>Find address</h1>
+  </div>
+  <div class="row">
+    <input class="col-9" #searchBox  placeholder="Insert postcode.." (keydown.enter)="search(searchBox.value); searchBox.value=''"/>
+    <button class="col-3 btn btn-dark" #searchBox  type="button" (click)="search(searchBox.value); searchBox.value=''">Search</button>
+  </div>
+  <div class="row">
+    <p class="text-danger" *ngIf="state === false">The post code "{{ input }}" was not found</p>
+  </div>
+  <div class="row" id="dataDiv">
+    <div class="col-sm-6 col-12">
+      <app-info [address]="selectedAddress"></app-info>
+    </div>
+    <div class="col-sm-6 col-12">
+      <div *ngIf="miles">
+        <div *ngIf="showMiles; else elseBlock">
+          <div class="p-2">
+            <p><fa-icon [icon]="faPlane"></fa-icon> Distance to London Heathrow airport: <b>{{ miles }}miles</b></p>
+          </div>
+        </div>
+        <ng-template #elseBlock>
+          <div class="p-2">
+            <p><fa-icon [icon]="faPlane"></fa-icon> Distance to London Heathrow airport: <b>{{ meters }}km</b></p>
+          </div>
+        </ng-template>
+        <div class="d-flex flex-row-reverse">
+          <button class="p-2 btn btn-dark" id="btnDistance" type="button" (click)="changeUnit()">Change to {{ unity }}</button>
+        </div>
+      </div>
+      <app-history></app-history>
+    </div>
+  </div>
+</div>
